@@ -9,9 +9,10 @@ def main():
             for line in f:
                 data += line.strip()
         # str -> remove special char, convert lower -> str
-        print(data)
         processed = analyzer.preprocessing(data)
         # str -> count words -> dic
+        count = analyzer.count_words(processed)
+        print(f"{len(count)} words in file")
         # dic -> sort in descending order-> list
 
     except FileNotFoundError:
