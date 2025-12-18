@@ -31,3 +31,20 @@ def count_words(processed: str) -> dict[str, int]:
         else:
             count[word] = 1
     return count
+
+
+def top_words(count: dict[str, int], number: int) -> list:
+    """
+    Docstring for top_words
+
+    :param count: dict containing word and its count
+    :type count: dict
+    :param number: number of words want to know
+    :type number: int
+    :return: list consist of words sorted in descending order of count
+    :rtype: list
+    """
+    items = list(count.items())
+    sorted_items = sorted(items, key=lambda x: x[1], reverse=True)
+
+    return sorted_items[:number]

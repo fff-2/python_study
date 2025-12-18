@@ -8,13 +8,16 @@ def main():
             data = ""
             for line in f:
                 data += line.strip()
-        # str -> remove special char, convert lower -> str
-        processed = analyzer.preprocessing(data)
-        # str -> count words -> dic
-        count = analyzer.count_words(processed)
-        print(f"{len(count)} words in file")
-        # dic -> sort in descending order-> list
-
+            # str -> remove special char, convert lower -> str
+            processed = analyzer.preprocessing(data)
+            # str -> count words -> dic
+            count = analyzer.count_words(processed)
+            print(f"{len(count)} words in file")
+            # dic -> sort in descending order-> list()
+            n = int(input("Number of words to display:"))
+            top_words = analyzer.top_words(count, n)
+            for rank, (word, number) in enumerate(top_words, start=1):
+                print(f"{rank:}: {word: <15} {number}")
     except FileNotFoundError:
         print(f"File {file_name} not found")
 
