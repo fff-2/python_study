@@ -17,7 +17,7 @@ def main():
             n = int(input("Number of words to display:"))
             top_words = analyzer.top_words(count, n)
             for rank, (word, number) in enumerate(top_words, start=1):
-                print(f"{rank:}: {word: <15} {number}")
+                print(f"{rank: >3}: {word: <15} {number}")
     except FileNotFoundError:
         print(f"File {file_name} not found")
 
