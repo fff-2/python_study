@@ -16,8 +16,10 @@ def main():
             # dic -> sort in descending order-> list()
             n = int(input("Number of words to display:"))
             top_words = analyzer.top_words(count, n)
+            print("=" * 30)
             for rank, (word, number) in enumerate(top_words, start=1):
                 print(f"{rank: >3}: {word: <15} {number}")
+            print("=" * 30)
     except FileNotFoundError:
         print(f"File {file_name} not found")
 

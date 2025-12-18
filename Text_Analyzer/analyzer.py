@@ -14,6 +14,19 @@ def preprocessing(data: str) -> str:
     return data
 
 
+def load_stopwords(filepath="stopwords.txt"):
+    """
+    load stopwords from stopwords.txt
+
+    :param filepath: stopwords.txt
+    """
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            return {line.strip() for line in f}
+    except FileNotFoundError:
+        return set()
+
+
 def count_words(processed: str) -> dict[str, int]:
     """
     count words and organize the data as a dict
@@ -25,8 +38,11 @@ def count_words(processed: str) -> dict[str, int]:
     """
     words = processed.split()
     count = {}
+    stop_words = load_stopwords()
     for word in words:
-        if word in count:
+        if word in stop_words:
+            pass
+        elif word in count:
             count[word] += 1
         else:
             count[word] = 1
